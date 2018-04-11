@@ -1,0 +1,39 @@
+Sub b()
+
+
+Dim UIObj As New CUIAutomation
+Dim Dsktp As IUIAutomationElement
+Dim DtChildNodes As IUIAutomationElementArray
+Dim AppNodes As IUIAutomationElementArray
+Dim ExCoPtn As IUIAutomationExpandCollapsePattern
+
+
+Set Dsktp = UIObj.GetRootElement
+
+Set ocondition = UIObj.CreateTrueCondition
+Set DtChildNodes = Dsktp.FindAll(TreeScope_Children, ocondition)
+
+For n = 0 To DtChildNodes.Length - 1
+    Name = DtChildNodes.GetElement(n).CurrentName
+    If Mid(Name, 1, 17) = "Google - Internet" Then
+        DtChild = n
+    End If
+Next
+
+Set oconditionA = UIObj.CreateTrueCondition
+If DtChild > 0 Then
+    Set AppNodes = DtChildNodes.GetElement(CLng(DtChild)).FindAll(TreeScope_Descendants, oconditionA)
+End If
+
+For p = 0 To AppNodes.Length - 1
+    If AppNodes.GetElement(p).CurrentName = "File" Then
+        Debug.Print AppNodes.GetElement(p).CurrentName
+        Set ExCoPtn = AppNodes.GetElement(p).GetCurrentPattern(UIA_PatternIds.UIA_ExpandCollapsePatternId)
+        ExCoPtn.Expand
+        Exit For
+    End If
+Next
+
+Debug.Print AppNodes.Length
+
+End Sub
