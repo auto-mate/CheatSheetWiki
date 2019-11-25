@@ -1,0 +1,260 @@
+Array
+$myArray = array(“a”,”b”,”c”,”d”);
+echo $myArray[0]; //  outputs “a”
+
+// indexed
+$fruit = array("orange", "apple”, "bannana");
+$arrlength = count($fruit);
+
+for($x = 0; $x < $arrlength; $x++) {
+    echo $fruit[$x];
+    echo "<br>";
+}
+
+// associative
+$fruitAndColour = array("apple"=>"green", "orange"=>" orange ", "bannana"=>"yellow");
+echo "My Apple is " . $ fruitAndColour ['apple'];
+// ref array in array as 
+$arrayName[x][y]
+
+Sort with 
+asort($arrayName) // assoc array by val  NB “arsort” reverse 
+ksort($arrayName) // assoc array by key NB “krsort” reverse
+
+sort($arrayName) // sort ascending 
+rsort($arrayName) // reverse sort (desc)
+
+Command Terminator 
+;
+
+Comments
+// single line
+/*
+multiple lines
+*/
+
+Dates
+echo date('Y-m-d h:m:s'); // Current Datetime
+
+$d = date_create('2018-10-30'); // Make Date
+echo date_format($d,'Y-m-d');   // Output date
+
+date_add($d,date_interval_create_from_date_string(
+                  "40 days"));   // adds 40 days to $d
+echo date_format($d,"Y-m-d"); // Output $d
+
+$d2 = date_create('2018-12-30'); // Make Date
+$diff = date_diff($d,$d2);
+echo $diff->days; // output difference in days 
+
+Directory List
+$dir = "/DirectoryName/";
+$dArray = scandir($dir); //file names to array
+
+Do while
+
+$x = 1;
+
+do {
+    echo "x is: $x <br>";  // note able to add $x directly into string 
+    $x++;                            // use of $x++ to increment $x by 1
+} while($x <= 10)
+
+
+
+if
+if ( x == 1 ) {
+  echo “x is 1”;
+
+} elseif ( x == 2 ) {
+  echo “x is 2”;
+
+} else {
+  echo “x is not 1 or 2”;
+
+}
+
+file_exists()
+echo file_exists("somefile.txt"); // outputs true /false
+
+file_get_contents
+echo file_get_contents("somefile.txt "); // outputs file
+
+file_put_contents
+echo file_put_contents("test.txt","Writes This Text to file.");
+
+for 
+for ($x = 0; $x <= 10; $x++) {
+    echo "\$x is: $x <br>";  // note use of escape character “\”
+}                                            // to stop the first $ being interpreted as 
+                                             // the being of a variable and just as being
+                                             // text value”$”
+
+
+
+
+
+foreach
+$myCollectionItems = array("apple", "orange", "bananna");
+
+foreach ($myCollectionItems as $CollectionItem) {
+  echo "$CollectionItem <br>";
+}
+
+$fruitAndColour = array("apple"=>"green", "orange"=>" orange ", "bannana"=>"yellow");
+
+foreach($fruitAndColour as $fruit => $colour) {
+  echo "$fruit = $colour<br>";
+}
+Functions (user created)
+function outputName($name) {
+  echo $name;
+}
+outputName(“Ted”);   // outputs “Ted”
+
+include_once()
+include_once("ini.php"); // includes file ini.php
+
+json_decode()
+$fAndC = '{"Apple":"Green","Orange":"Orange","Bananna":"Yellow"}'; 
+//reads string and turns into php object
+$fAndCObj = json_decode( $fAndC );
+var_dump($fAndCObj);
+print_r($fAndCObj);
+echo $fAndCObj->Apple;
+
+json_encode()
+$fruitAndColour = array("apple"=>"green", "orange"=>"   
+                                            orange ", "bannana"=>"yellow");
+echo json_encode($fruitAndColour);
+
+Output 
+echo “text”;
+echo $variableName;
+echo function($variableName);
+echo “text” .  $variableName;
+
+print “text”;
+print $variableName;
+print function($variableName);
+print “text” .  $variableName;
+
+print_r($var) // outputs object values
+
+<?= $variabeToOutput ?>
+
+
+
+pregmatch(regexstring,stringToCheck)
+
+echo preg_match("/is/","this thing");
+//returns true
+
+session_start()
+session_start(); // start a session put first in page
+
+session_unset() and session_destroy()
+session_unset();   // remove values
+session_destroy(); // kill sesssion
+
+strlen()
+echo strlen(“OK”);  // outputs 2
+
+strpos()
+echo strpos("Where is it", "it"); // outputs 9
+
+str_replace("it", " my dinner!", "Where is it"); // outputs Where is my dinner!
+
+switch
+switch (X) {
+    case “A”:
+        code to be executed if X is “A”;
+        break;
+    case “B”:
+        code to be executed if X is “B”;
+        break;
+    case “C”:
+        code to be executed if X=”C”;
+        break;
+    default:
+        code to be executed if X is non of the above;
+}
+
+Tags
+<?php  ?>
+
+Variables (Start with $)
+$someVariable = 1;
+$someVariable = 1.5;
+$someVariable = “Hello”;
+
+while
+$x = 1;
+
+while($x <= 10) {
+    echo "x is: $x <br>";  // note able to add $x directly into string 
+    $x++;                            // use of $x++ to increment $x by 1
+}
+
+$_GET[‘’]
+echo $_GET[‘name’]  // returns bob if page was called with
+                                      // ….php?name=bob
+
+$GLOBALS
+
+$GLOBALS[‘someVar’] = 100;
+// $GLOBALS[‘someVar’] can be used to get value 100
+// anywhere in even in functions.
+
+$_POST[]
+Like $_GET but if data sent with POST method as namecan be retrieved with $_POST[‘name’] 
+
+$_SERVER[]
+Returns info examples
+$_SERVER[‘PHP_SELF’] = current filename
+$_SERVER[‘SCRIPT_FILENAME’] = current file + path
+$_SERVER[‘SERVER_ADDR’] = host ip
+$_SERVER[‘REMOTE_ADDR’] = remote ip
+$_SERVER[‘REMOTE_PORT’] = remote port
+
+Cookies from W3Schools
+<?php 
+$cookie_name = "user";
+$cookie_value = "John Doe";
+setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day  // !!! before <html>
+?> 
+<html>
+<body>
+<?php
+if(!isset($_COOKIE[$cookie_name])) {
+    echo "Cookie named '" . $cookie_name . "' is not set!";
+} else {
+    echo "Cookie '" . $cookie_name . "' is set!<br>";
+    echo "Value is: " . $_COOKIE[$cookie_name];
+}
+
+
+
+
+
+
+Classes basic
+
+class myClassName {
+
+    public $name   = "myClass"; // default name
+    public $value  = 0;       // default value
+
+    public function square() {
+         $x = $this->value * $this->value;
+         return $x;
+
+    }
+
+}
+
+$test = new myClassName();
+$test->value = 10;
+echo $test->square();  // returns 100;
+echo $test->name;      // “myClass”
+
