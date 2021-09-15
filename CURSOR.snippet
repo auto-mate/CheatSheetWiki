@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>  
+<CodeSnippets  xmlns="https://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">  
+<_locDefinition xmlns="urn:locstudio">  
+    <_locDefault _loc="locNone" />  
+    <_locTag _loc="locData">Title</_locTag>  
+    <_locTag _loc="locData">Description</_locTag>  
+    <_locTag _loc="locData">Author</_locTag>  
+    <_locTag _loc="locData">ToolTip</_locTag>  
+   <_locTag _loc="locData">Default</_locTag>  
+</_locDefinition>  
+<CodeSnippet Format="1.0.0">  
+<Header>  
+<Title>CURSOR</Title>  
+<Shortcut>cs</Shortcut>  
+<Description>Example Snippet for Cursor. ctrl kx</Description>  
+<Author>Andrew Harper</Author>  
+<SnippetTypes>  
+<SnippetType>Expansion</SnippetType>  
+</SnippetTypes>  
+</Header>  
+<Snippet>  
+<Declarations>  
+<Literal>  
+<ID>CatchCode</ID>  
+<ToolTip>Code to handle the cursor</ToolTip>  
+<Default>CursorCode</Default>  
+</Literal>  
+</Declarations>  
+<Code Language="SQL"><![CDATA[  
+DECLARE @TEST Varchar(max)  
+DECLARE my_cursor CURSOR FOR SELECT * FROM MyTable  
+OPEN my_cursor  
+FETCH NEXT FROM my_cursor INTO @TEST  
+WHILE @@FETCH_STATUS=0  
+BEGIN  
+SELECT @TEST;  
+FETCH NEXT FROM my_cursor INTO @TEST  
+END  
+CLOSE my_cursor  
+DEALLOCATE my_cursor  
+]]>  
+</Code>  
+</Snippet>  
+</CodeSnippet>  
+</CodeSnippets>
